@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const secrets = require('../../auth/secrets');
 const { authenticate } = require('../../auth/middleware')
 
-const db = require('./accountsModel.js');
+const db = require('./accounts-model.js');
 const musicDB = require('../music/music-model')
 
 // Register account
@@ -30,9 +30,10 @@ router.post('/login', (req, res) => {
 const { email, password } = req.body;
 
     db.findByEmail({email})
-    .first()
+    // .first()
     .then(user => {
-        if (user && bcrypt.compareSync(password, user.password)) {
+        console.log(user)
+        if (user) {
             const token = generateToken(user)
             res.status(200).json({id: user.id, message: `Hello ${user.name}!`, token: token });
         } else {
@@ -43,6 +44,8 @@ const { email, password } = req.body;
         res.status(500).json(error);
     });
 });
+
+// && bcrypt.compareSync(password, user.password) came from line 36 after user
 
 //  Delete account 
 router.delete('/:id', authenticate, (req, res) => {
