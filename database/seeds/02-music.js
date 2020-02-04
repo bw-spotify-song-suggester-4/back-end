@@ -7,7 +7,7 @@ exports.seed = function(knex) {
       return knex('music').insert([
         {
           "track_id": 1, 
-         "track_name": "",
+         "track_name": "hello world",
          "artist_name": "",
          "acousticness": 0.0,
          "danceability": 0.1,

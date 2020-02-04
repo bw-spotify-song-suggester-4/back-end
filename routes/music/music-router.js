@@ -10,11 +10,22 @@ const db = require('./music-model.js');
 
 module.exports = router;
 
+router.post('/singletrack', (req, res) => {
+    const track_id = req.body.track_id
+    axios.get(``)
+        .then(resp => {
+            // console.log(resp.data.seed)
+            const song = resp.data.seed
+            return res.status(200).json(song);
+        })
+        .catch(err => res.status(500).json({error: err}))
+})
+
 // POST - save song to favs
 
-router.post('/save', authenticate, (req, res) => {
+router.post('/save', (req, res) => {
     const track_id = req.body.track_id
-    const account_id = req.account.id
+    // const account_id = req.account.id
     axios.get(``)
         .then(resp => {
             db.saveSong(resp.data.seed, account_id, track_id)

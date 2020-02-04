@@ -9,13 +9,6 @@ module.exports = {
 
 // DATABASE FUNCTIONS BELOW
 
-function getSavedSongs(id) {
-    return db('account_to_music')
-        .select()
-        .where({ "account_id": id })
-        .join("music", "song_id", "music.id")
-}
-
 function saveSong(song, account_id, track_id) {
     return db('music')
         .insert(song)
@@ -25,11 +18,12 @@ function saveSong(song, account_id, track_id) {
         })
 }
 
-// function findById(id) {
-//     return db('music')
-//         .where('id', id)
-//         .first();
-// }
+function getSavedSongs(id) {
+    return db('account_to_music')
+        .select()
+        .where({ "account_id": id })
+        .join("music", "song_id", "music.id")
+}
 
 function associateSongToAccount (song_id, account_id, track_id) {
     const association = { 
