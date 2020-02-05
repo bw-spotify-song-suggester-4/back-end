@@ -24,6 +24,8 @@ exports.up = function(knex) {
         tbl.string('tag_en', 25)
     })
     .createTable('account_to_music', tbl => {
+        tbl.increments();
+
         tbl.integer('account_id')
             .unsigned()
             .references('id')
@@ -35,9 +37,14 @@ exports.up = function(knex) {
             .inTable('music')
             .onUpdate('cascade')
             .onDelete('cascade');
+        
         tbl.integer('favorites_id')
-           
-    })
+        .unsigned()
+        .references('id')
+        .inTable("Favorites")
+        .onDelete('Restrict')
+        .onUpdate('Cascade');
+    });
 
 };
 

@@ -32,8 +32,8 @@ if (songname) {
 // POST - save song to favs
 router.post('/save', (req, res) => {
     // the logic for favorites collection will be similiar
-    // you will also need a way to connect the user, song, and favorites playlist
-    // this can be an ID representing a favorite song collection or in your user schema, they have a field for favorite playlist that you can just dump stuff into like an array
+    // will also need a way to connect the user, song, and favorites playlist
+    // this can be an ID representing a favorite song collection or in user schema, they have a field for favorite playlist 
     const track_id = req.body.track_id
     const account_id = req.account.id
     const favorites_id = req.favorites_id
