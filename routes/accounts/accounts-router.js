@@ -20,7 +20,7 @@ router.post('/register', (req, res) => {
           })
           .catch(err => {
             console.log(err)
-            res.status(500).json({error: err})
+            res.status(500).json({message: 'WTF is going on, bro?! I need a name, email, and password to create this account'})
         })
 });
 
@@ -40,8 +40,9 @@ const { email, password } = req.body;
             res.status(401).json({ message: 'Unable to log in.'});
         }
     })
-    .catch(error => {
-        res.status(500).json(error);
+    .catch(err => {
+        console.log(err)
+        res.status(500).json({message: 'WTF is going on, bro?! I need an email and password to log in!'});
     });
 });
 
@@ -56,7 +57,7 @@ router.delete('/:id', authenticate, (req, res) => {
         .catch(err => console.log(err))
     } else {
         // console.log(id, req.account.id)
-        return res.status(403).json({message: "You must be logged into the account you want to delete."})
+        return res.status(403).json({message: "You must be logged in to delete, Bro."})
     }
     
 })
@@ -67,33 +68,33 @@ router.put('/:id', authenticate, (req, res) => {
     const accountInfo = req.body
     if (id) {
         db.editAccount(id, accountInfo)
-        .then(() => res.status(200).json({message: "Account information successfully updated."}))
+        .then(() => res.status(200).json({message: "Account info successfully updated."}))
         .catch(err => console.log(err))
     } else {
         // console.log(id, req.account.id)
-        return res.status(403).json({message: "You must be logged into the account you want to edit."})
+        return res.status(403).json({message: "You must be logged in to the account you want to edit, Bro."})
     }
     
 })
 
-// Get all saved songs by account ID
+// GET - all saved songs by account ID
 
 router.get('/:id/favorites', authenticate, (req, res) => {
-    const id = req.params.id
-    musicDB.getSavedSongs(id)
+    const userid = req.params.id
+    db.getSavedSongs(userid)
         .then(songs => {
             res.status(200).json(songs)
         })
         .catch(err => res.status(500).json(err))
 })
 
-// Delete favorite tracks
+// DELETE - favorite tracks
 
 router.delete('/:id/favorites/:track_id', authenticate, (req, res) => {
     const id = req.params.id
     const track_id = req.params.track_id
     if (id == req.account.id) {
-        musicDB.deleteSongFromFaves(id, track_id)
+        db.deleteSongFromFaves(id, track_id)
         .then(() => res.status(200).json({message: "Song deleted from favorites!"}))
         .catch(err => console.log(err))
     } else {

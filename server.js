@@ -15,7 +15,7 @@ server.use('/accounts', accountsRouter);
 server.use('/music', musicRouter);
 
 server.get('/', (req, res) => {
-    res.send("It's working!");
+    res.send("API. It's working! This shows the db is working.");
   });
 
 

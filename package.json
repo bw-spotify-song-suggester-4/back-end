@@ -2,10 +2,15 @@
   "name": "back-end",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "12.13.0",
+    "npm": "6.x"
+  },
   "main": "index.js",
   "scripts": {
     "server": "nodemon",
-    "start": "node index.js"
+    "start": "node index.js",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
