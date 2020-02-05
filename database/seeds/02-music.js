@@ -11,7 +11,6 @@ exports.seed = function(knex) {
          "artist_name": "",
          "acousticness": 0.0,
          "danceability": 0.1,
-         "duration_ms": 1,
          "energy": 0.2
       },
         
@@ -21,7 +20,6 @@ exports.seed = function(knex) {
         "artist_name": "",
         "acousticness": 0.1,
         "danceability": 0.2,
-        "duration_ms": 2,
         "energy": 0.3
       },
         
@@ -31,7 +29,6 @@ exports.seed = function(knex) {
         "artist_name": "",
         "acousticness": 0.2,
         "danceability": 0.3,
-        "duration_ms": 3,
         "energy": 0.4
       },
         

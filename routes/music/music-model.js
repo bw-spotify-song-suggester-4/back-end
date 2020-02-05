@@ -29,16 +29,16 @@ function associateSongToAccount (song_id, account_id, track_id) {
     const association = { 
         account_id: account_id,
         song_id: song_id,
-        real_track_id: track_id
+        favorites_id: track_id
     }
     return db('account_to_music')
         .insert(association)
         .returning('account_id')
 }
-function deleteSongFromFaves(account_id, track_id) {
+function deleteSongFromFaves(account_id, track_id, favorites_id) {
     return db('account_to_music')
         .select()
-        .where({account_id, real_track_id: track_id})
+        .where({account_id, favorites_id, track_id})
         .limit(1)
         .first()
         .del();

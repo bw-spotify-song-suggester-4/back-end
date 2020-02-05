@@ -19,11 +19,8 @@ exports.up = function(knex) {
             .notNullable();
         tbl.string('artist_name')
             .notNullable();
-        tbl.decimal('acousticness', 10)
-        tbl.decimal('danceability', 10)
-        tbl.decimal('duration_ms', 10)
-        tbl.decimal('energy', 10)
-        
+        tbl.string('genre', 25);
+        tbl.string('tag_en', 25)
     })
     .createTable('account_to_music', tbl => {
         tbl.integer('account_id')
@@ -32,12 +29,12 @@ exports.up = function(knex) {
             .inTable('accounts')
             .onUpdate('cascade')
             .onDelete('cascade');
-        tbl.integer('song_id')
+        tbl.integer('track_id')
             .references('id')
             .inTable('music')
             .onUpdate('cascade')
             .onDelete('cascade');
-        tbl.string('real_track_id')
+        tbl.string('favorites_id')
             .notNullable()
     })
 
