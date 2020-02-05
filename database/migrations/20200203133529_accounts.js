@@ -19,6 +19,7 @@ exports.up = function(knex) {
             .notNullable();
         tbl.string('artist_name')
             .notNullable();
+        tbl.string('favorites_id')
         tbl.string('genre', 25);
         tbl.string('tag_en', 25)
     })
@@ -34,8 +35,8 @@ exports.up = function(knex) {
             .inTable('music')
             .onUpdate('cascade')
             .onDelete('cascade');
-        tbl.string('favorites_id')
-            .notNullable()
+        tbl.integer('favorites_id')
+           
     })
 
 };
