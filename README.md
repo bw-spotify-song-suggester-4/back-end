@@ -2,40 +2,40 @@
 All endpoints: 
 
 // Register account
-POST REQ ('/register')
+POST REQ ('accounts/register')
 
 // Login to account 
-POST ('/login')
+POST ('accounts/login')
 
 
 //  Delete account 
-DELETE ('/:id')
+DELETE ('/accounts/:id')
 
 
 // Update account
-PUT ('/:id')
+PUT ('accounts/:id')
 
 // GET all saved songs by account ID
-GET ('/:id/favorites')
+GET ('accounts/:id/favorites')
 
 
 // DELETE - favorite tracks
-delete ('/:id/favorites/:track_id')
+delete ('accounts/:id/favorites/:track_id')
 
 
 
 // GET - search song by title 
-('/search/:songname') 
+('music/search/:track_name') 
 ---> where we use an axios call to external api to add to our db 
-     axios.get(`http://musicovery.com/api/V6/track.php?fct=search&title=${songname}&resultsnumber=100&minmatch=90`)
+     axios.get(`https://sss-data-backend.herokuapp.com/search=${track_name}`)
 
 // POST - save song to favs
-('/save')
+('/music/save')
 
 // GET - get suggested songs
-('/suggested')
+('/music/suggested')
 ---> where we use an axios call to external api to search for genre (recommendations) add to our db 
-axios.get(`http://musicovery.com/api/V6/tag.php?&fct=search&type=${genre}`)
+axios.get(`https://sss-data-backend.herokuapp.com/get-suggestions=${feature}&min=${ min }&max=${ max }&limit=${totalLimit || 200})
 
 
 
