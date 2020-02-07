@@ -11,7 +11,7 @@ function authenticate (req, res, next) {
     if (token) {
         jwt.verify(token, secrets.jwtSecret, (err, decodedToken) => {
             if(err) {
-              res.status(401).json({ message: 'You shall not pass.' });
+              res.status(401).json({ message: 'You shall not pass. Invaid credentials' });
               console.log(err)
             } else {
               req.account = {  id: decodedToken.id, email: decodedToken.email }
