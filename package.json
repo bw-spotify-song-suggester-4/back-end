@@ -10,8 +10,9 @@
   "scripts": {
     "server": "nodemon",
     "start": "node index.js",
+    "test": "cross-env DB_ENV=testing jest --watch",
     "heroku-prebuild": "echo This runs before Heroku installs your dependencies.",
-  "heroku-postbuild": "echo This runs afterwards.",
+    "heroku-postbuild": "echo This runs afterwards.",
     "build": "webpack"
   },
   "repository": {
@@ -32,12 +33,16 @@
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^3.21.2",
     "heroku": "^7.37.0",
+    "jest": "^25.1.0",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.20.8",
-    "sqlite3": "^4.1.1"
+    "sqlite": "^3.0.3",
+    "sqlite3": "^4.1.1",
+    "supertest": "^4.0.2"
   }
 }
