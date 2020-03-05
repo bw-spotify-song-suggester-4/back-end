@@ -35,7 +35,7 @@ delete ('accounts/:id/favorites/:track_id')
 // GET - get suggested songs
 ('/music/suggested')
 ---> where we use an axios call to external api to search for genre (recommendations) add to our db 
-axios.get(`https://sss-data-backend.herokuapp.com/get-suggestions=${feature}&min=${ min }&max=${ max }&limit=${totalLimit || 200})
+axios.get(`https://sss-data-backend.herokuapp.com/get-suggestions=${feature}&min=${ min }&max=${ max }&limit=${totalLimit || 200}`)
 
 
 
